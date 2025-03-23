@@ -5,7 +5,16 @@ import os
 import requests
 from PIL import Image
 import io
-from openai import OpenAI as NebiusClient
+# Set up Nebius AI client with proper API key handling
+from openai import OpenAI as NebiusClient  # ✅ FIXED IMPORT
+
+# ...
+
+client = NebiusClient(  # ✅ FIXED NAME
+    base_url="https://api.studio.nebius.com/v1/",
+    api_key=api_key
+)
+
 from dotenv import load_dotenv
 # Set page config as the first command
 st.set_page_config(page_title="🍽️ SmartMeal AI Planner", layout="wide")
