@@ -12,7 +12,7 @@ from openai import OpenAI as NebiusClient  # ✅ FIXED IMPORT
 
 client = NebiusClient(  # ✅ FIXED NAME
     base_url="https://api.studio.nebius.com/v1/",
-    api_key=api_key
+    api_key=NEBIUS_API_KEY
 )
 
 from dotenv import load_dotenv
