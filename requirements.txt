@@ -1,5 +1,8 @@
 streamlit
 requests
-python-dotenv
 Pillow
 openai
+pandas 
+plotly 
+openai 
+python-dotenv

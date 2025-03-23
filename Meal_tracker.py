@@ -28,7 +28,7 @@ if not api_key:
     st.error("Please provide a valid Nebius API key in the .env file.")
     st.stop()
 
-client = OpenAI(
+client = NebiusClient(
     base_url="https://api.studio.nebius.com/v1/",
     api_key=api_key
 )
