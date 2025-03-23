@@ -5,9 +5,8 @@ import os
 import requests
 from PIL import Image
 import io
-from openai import OpenAI
+from openai import OpenAI as NebiusClient
 from dotenv import load_dotenv
-
 # Set page config as the first command
 st.set_page_config(page_title="🍽️ SmartMeal AI Planner", layout="wide")
 
