@@ -9,12 +9,32 @@ import io
 from openai import OpenAI as NebiusClient  # ✅ FIXED IMPORT
 
 # ...
+import httpx
+import json
 
-client = NebiusClient(  # ✅ FIXED NAME
-    base_url="https://api.studio.nebius.com/v1/",
-    api_key = os.getenv("NEBIUS_API_KEY")
+def call_nebius(prompt):
+    url = "https://api.studio.nebius.com/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
 
-)
+    body = {
+        "model": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": 700,
+        "temperature": 0.6,
+        "top_p": 0.9,
+        "extra_body": {"top_k": 50}
+    }
+
+    try:
+        response = httpx.post(url, headers=headers, json=body)
+        response.raise_for_status()
+        return response.json()["choices"][0]["message"]["content"]
+    except Exception as e:
+        st.error(f"Error calling Nebius AI: {e}")
+        return None
 
 from dotenv import load_dotenv
 # Set page config as the first command
